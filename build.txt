@@ -1,0 +1,1 @@
+ g++ -I  ~/.local/include/vtk-8.2/ sample.cpp ~/.local/lib/libVTK-8.2.a   -o test.o -std=c++11 -lpthread -ldl
