@@ -21,11 +21,11 @@
 #include <string>
 #include <iostream>
 
-int main (void) {
+int main (int argc, char* argv[]) {
 
   vtkNew<vtkXMLUnstructuredGridReader> reader;
-  const std::string filename = "filename.vtu";
-  reader->SetFileName(filename.c_str());
+  std::cout << "Loading: " << argv[1] << std::endl;
+  reader->SetFileName(argv[1]);
   reader->Update();   
   auto output = reader->GetOutput();
 
@@ -33,7 +33,7 @@ int main (void) {
   auto Writer =
     vtkSmartPointer<vtkXMLUnstructuredGridWriter>
     ::New();
-  Writer->SetFileName("converted-filename.vtu");
+  Writer->SetFileName("lzma.vtu");
   Writer->SetInputData(output);
   //Writer->SetCompressorTypeToNone();
   //Writer->SetDataModeToAscii();
